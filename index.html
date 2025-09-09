@@ -372,6 +372,25 @@ src="https://www.facebook.com/tr?id=944218417170643&ev=PageView&noscript=1"
   AFRAME.registerComponent("play-video-component", playVideoComponent);
   AFRAME.registerComponent("gesture-detector", gestureDetectorComponent);
   AFRAME.registerComponent("pinch-scale", pinchScaleComponent);
+
+  /* -------------------- ADDED: external URL + button behavior -------------------- */
+  const changeTheExternalUrl = () => {
+    const externalURL = "https://frenchiesvseverybody.github.io/FvEGame2/"; // ADDED
+    return externalURL; // ADDED
+  }; // ADDED
+
+  document.addEventListener("DOMContentLoaded", () => { // ADDED
+    const directButton = document.getElementById("start-button-id"); // ADDED
+    if (!directButton) return; // ADDED
+    directButton.addEventListener("click", () => { // ADDED
+      const URL = changeTheExternalUrl(); // ADDED
+      window.location.href = `${URL}`; // ADDED
+    }); // ADDED
+    setTimeout(() => { // ADDED
+      directButton.style.display = "block"; // ADDED
+    }, 45000); // 45,000 ms = 45 seconds (ADDED)
+  }); // ADDED
+  /* -------------------- END ADDED -------------------- */
     </script>
   </head>
   <body>
@@ -409,6 +428,10 @@ src="https://www.facebook.com/tr?id=944218417170643&ev=PageView&noscript=1"
         <img id="errorgifimg" class="gif" />
       </div>
     </div>
+
+    <!-- ADDED: button image (hidden by default; shown after 45s by script) -->
+    <img class="start-button" id="start-button-id" src="assets/video game button.png" style="display:none;" /> 
+    <!-- END ADDED -->
 
     <div id="status-div">Point Phone at Dog logo</div>
 
